@@ -16,6 +16,15 @@ function PastRides(props) {
 		if (date < now) past.push(props.data[i]);
 	}
 
+	function calcDistance(stationCode, path) {
+		var curr = path[0];
+		path.forEach((stop) => {
+			if (Math.abs(stationCode - stop) < Math.abs(stationCode - curr))
+				curr = stop;
+		});
+		return Math.abs(curr - stationCode);
+	}
+
 	// console.log(past);
 
 	if (past.length === 0) return <div>There are no Past Rides</div>;
@@ -41,6 +50,10 @@ function PastRides(props) {
 						state={ride.state}
 						city={ride.city}
 						station_code={props.users.station_code}
+						distance={calcDistance(
+							props.users.station_code,
+							props.data[i].station_path
+						)}
 					/>
 				))}
 			</div>

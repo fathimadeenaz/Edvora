@@ -2,14 +2,6 @@ import classes from "./Card.module.css";
 
 function Card(props) {
 	// console.log(props.id);
-	function calcDistance(stationCode, path) {
-		var curr = path[0];
-		path.forEach((stop) => {
-			if (Math.abs(stationCode - stop) < Math.abs(stationCode - curr))
-				curr = stop;
-		});
-		return Math.abs(curr - stationCode);
-	}
 
 	return (
 		<div className={classes.card}>
@@ -38,9 +30,7 @@ function Card(props) {
 					</div>
 					<div className={classes.detail}>
 						<span className={classes.key}>Distance : </span>
-						<span className={classes.value}>
-							{calcDistance(props.station_code, props.path)}
-						</span>
+						<span className={classes.value}>{props.distance}</span>
 					</div>
 				</div>
 				<div className={classes.loc}>
