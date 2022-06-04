@@ -1,0 +1,33 @@
+nav {
+	background-color: #101010;
+	padding: 10px 30px;
+	display: flex;
+	align-items: center;
+}
+
+.inner,
+.outer {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none;
+}
+
+.logo {
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+.username {
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+li img {
+	height: 40px;
+	width: 40px;
+	background-color: #292929;
+	margin-left: 15px;
+	border-radius: 50%;
+}

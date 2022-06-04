@@ -1,0 +1,13 @@
+.tabs {
+	list-style: none;
+	display: flex;
+}
+
+.tabs li {
+	margin-right: 35px;
+}
+
+.tab {
+	text-decoration: none;
+	color: #d0cbcb;
+}
