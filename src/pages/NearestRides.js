@@ -9,12 +9,12 @@ function NearestRides(props) {
 	}
 
 	function calcDistance(stationCode, path) {
-		var curr = path[0];
-		path.forEach((stop) => {
-			if (Math.abs(stationCode - stop) < Math.abs(stationCode - curr))
-				curr = stop;
-		});
-		return Math.abs(curr - stationCode);
+		let res = path[0];
+		for (let i = 0; i < path.length; i++) {
+			if (Math.abs(stationCode - res) > Math.abs(stationCode - path[i]))
+				res = path[i];
+		}
+		return Math.abs(res - stationCode);
 	}
 
 	let clone = structuredClone(props.data);
@@ -24,12 +24,13 @@ function NearestRides(props) {
 			props.users.station_code,
 			clone[i].station_path
 		);
+		// console.log(clone[i].distance);
 	}
 
 	clone.sort((a, b) => (a.distance > b.distance ? 1 : -1));
 
-	console.log(clone);
-	console.log(props.users.station_code);
+	// console.log(clone);
+	// console.log(props.users.station_code);
 
 	return (
 		<div>
