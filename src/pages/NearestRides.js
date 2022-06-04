@@ -3,7 +3,6 @@ import Card from "../components/ui/Card";
 function NearestRides(props) {
 	let formattedDate = [];
 	let formattedPath = [];
-	// let t = [];
 	for (let i = 0; i < props.data.length; i++) {
 		var myDate = String(new Date(props.data[i].date)).slice(4, 21);
 		formattedDate.push(myDate);

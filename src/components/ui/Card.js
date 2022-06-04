@@ -1,7 +1,7 @@
 import classes from "./Card.module.css";
 
 function Card(props) {
-	console.log(props.station_code);
+	// console.log(props.id);
 	function calcDistance(stationCode, path) {
 		var curr = path[0];
 		path.forEach((stop) => {
