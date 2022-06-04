@@ -8,9 +8,27 @@ import PastRides from "./pages/PastRides";
 import UpcomingRides from "./pages/UpcomingRides";
 
 function App() {
+	const [users, setUsers] = useState([]);
+
+	const fetchData = () => {
+		fetch("https://assessment.api.vweb.app/user")
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				setUsers(data);
+			});
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	// console.log(users.station_code);
+
 	const [isLoading, setIsLoading] = useState(true);
 	const [loadedRides, setLoadedRides] = useState([]);
-	const rides = [];
+	// const rides = [];
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -45,17 +63,17 @@ function App() {
 	}
 
 	return (
-		<Layout>
+		<Layout data={users}>
 			<Control />
 			<Switch>
 				<Route path="/nearest" exact>
-					<NearestRides data={loadedRides} />
+					<NearestRides data={loadedRides} users={users} />
 				</Route>
 				<Route path="/upcoming">
-					<UpcomingRides data={loadedRides} />
+					<UpcomingRides data={loadedRides} users={users} />
 				</Route>
 				<Route path="/past">
-					<PastRides data={loadedRides} />
+					<PastRides data={loadedRides} users={users} />
 				</Route>
 			</Switch>
 		</Layout>
